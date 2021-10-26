@@ -53,3 +53,7 @@ In client-server systems, every node has only one clear character, either client
 *1.12*
 Multiprocessor systems: having more than 2 processors, share the computer bus and sometimes the clock, memory, and peripheral devices.
 Clustered systems differ from the multiprocessor systems described in Section 1.3.2 in that they are composed of two or more individual systems—or nodes—joined together; each node is typically a multicore system.
+Clustered systems need to continue even if one or more systems in the cluster fails.
+
+*1.13*
+way 1: 

@@ -27,3 +27,12 @@ Mem:       12197788     1426356     8571824      225928     2199608    10154416
 Swap:      11718652           0    11718652
 
 ```
+
+size
+```
+-> % size ns3
+   text	   data	    bss	    dec	   	 hex	filename
+16969639	 357923	 147312	17474874	10aa53a	ns3
+#show the size of file in detail
+
+```

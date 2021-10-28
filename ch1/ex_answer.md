@@ -79,3 +79,12 @@ Local cache is designed for storing data only used in the single core, whereas, 
 *1.19*
 From slowest to fastest: 
 Magnetic tapes -> Optical disk -> Hard-dist drives -> Nonvolatile memory -> Main memory -> Cache -> Registers
+
+*1.20*
+SMP systems: each peer CPU processor performs all tasks, including operating-system functions and user processes. All processors share physical memory over the system bus.
+
+*1.21*
+a: Easy for only one process. For multitasking environment, must ensure that each process obtain the most recently updated cache value.
+b: We must make sure that a updated value in one cache is immediately reflected in all other caches where it resides.(usually a hardware issue)
+c: when a replica is updated in one place, all other replicas are brought up to date as soon as possible
+

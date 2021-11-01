@@ -58,3 +58,38 @@ Mechanisms determine how to do something; policies determine what will be done.
 The separation of policy and mechanism is important for flexibility. Policies are likely to change across places or over time. In the worst case, each change in policy would require a change in the underlying mechanism. A general mechanism flexible enough to work across a range of policies is preferable. A change in policy would then require redefinition of only certain parameters
 of the system.
 Policy decisions are important for all resource allocation. Whenever it is necessary to decide whether or not to allocate a resource, a policy decision must be made. Whenever the question is how rather than what, it is a mechanism that must be determined.
+<br>
+ **2.18 It is sometimes difficult to achieve a layered approach if two components of the operating system are dependent on each other. Identify a scenario in which it is unclear how to layer two system components that require tight coupling of their functionalities.** 
+  changes to one part of the system can have wide-ranging effects on other parts.
+<br>
+**2.19 What is the main advantage of the microkernel approach to system design? How do user programs and system services interact in a microkernel architecture? What are the disadvantages of using the microkernel approach?**
+- The main advantage: Making extending the OS easier
+- The client program and service never interact directly. Rather, they communicate indirectly by exchanging messages with the microkernel.
+- Disadvantages:
+  - the performance of microkernels can suffer due to increased system-function overhead.
+  - the operating system may have to switch from
+one process to the next to exchange the messages. The overhead involved in copying messages and switching between processes has been the largest impediment to the growth of microkernel-based operating systems.
+<br>
+  
+**2.20 What are the advantages of using loadable kernel modules?**
+- the kernel has a set of core components and can link in additional services via modules
+- more flexible than a layered system, because any module can call any other module.
+- more efficient than microkernel approach, because modules do not need to invoke message passing in order to communicate.
+- LKMs can be loaded or removed in run-time(e.g by USB)
+- LKM s allow a dynamic and modular kernel, while maintaining the performance benefits of a monolithic system
+<br>
+  
+**2.21 How are iOS and Android similar? How are they different?**
+- similarities:
+  - both are layed stack of software providing a rich set of frameworks supporting various functions.
+  - both are systems running in moblie devices
+- differences:
+  - ios running on Apple devices, whereas Androids runs on a variety of mobile platforms.
+<br>
+
+**2.22 Explain why Java programs running on Android systems do not use the standard Java API and virtual machine.**
+- Android RunTime ART , a virtual machine designed for Android and optimized for mobile devices with limited memory and CPU processing capabilities. Java programs are first compiled to a Java bytecode .class file and then translated into an executable .dex file.
+- Here, .dex files are compiled into native machine code when they are installed on a device, from which they can execute on the ART . AOT compilation allows more efficient application execution as well as reduced power consumption, features that are crucial for mobile systems.
+<br>
+
+**2.24 The experimental Synthesis operating system has an assembler incorporated in the kernel. To optimize system-call performance, the kernel assembles routines within kernel space to minimize the path that the system call must take through the kernel. This approach is the antithesis of the layered approach, in which the path through the kernel is extended to make building the operating system easier. Discuss the pros and cons of the Synthesis approach to kernel design and system-performance  optimization.**

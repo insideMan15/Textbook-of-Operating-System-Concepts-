@@ -36,3 +36,21 @@ size
 #show the size of file in detail
 
 ```
+
+timezone
+```
+-> % timedatectl
+               Local time: Thu 2021-11-04 01:01:07 CST
+           Universal time: Wed 2021-11-03 17:01:07 UTC
+                 RTC time: Wed 2021-11-03 17:01:07    
+                Time zone: Asia/Shanghai (CST, +0800) 
+System clock synchronized: yes                        
+              NTP service: active                     
+          RTC in local TZ: no 
+
+-> % timedatectl set-timezone your_time_zone
+#set timezone
+
+-> % timedatectl list-timezones
+#list available timezones
+```

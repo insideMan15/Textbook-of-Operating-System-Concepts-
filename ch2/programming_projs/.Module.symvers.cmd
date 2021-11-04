@@ -1,0 +1,1 @@
+cmd_/home/test/os_answers/Textbook-of-Operating-System-Concepts-/ch2/programming_projs/Module.symvers := sed 's/ko$$/o/' /home/test/os_answers/Textbook-of-Operating-System-Concepts-/ch2/programming_projs/modules.order | scripts/mod/modpost -m -a   -o /home/test/os_answers/Textbook-of-Operating-System-Concepts-/ch2/programming_projs/Module.symvers -e -i Module.symvers   -T -

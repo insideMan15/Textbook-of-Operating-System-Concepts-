@@ -1,10 +1,8 @@
 **Practice Exercises**
 ***
-
 **2.1 What is the purpose of system calls?**
 Providing an interface to the services made available by an OS.
 <br>
-
 
 **2.2 What is the purpose of the command interpreter? Why is it usually separate from the kernel?**
 Purpose of command interpreter: Allowing users to directly enter commands to be performed by the OS. It is so called User and OS interface.

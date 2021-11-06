@@ -1,0 +1,1 @@
+cmd_/home/test/os_answers/Textbook-of-Operating-System-Concepts-/ch2/programming_projs/jiffies/jiffies.mod := { echo  /home/test/os_answers/Textbook-of-Operating-System-Concepts-/ch2/programming_projs/jiffies/jiffies.o;  echo; } > /home/test/os_answers/Textbook-of-Operating-System-Concepts-/ch2/programming_projs/jiffies/jiffies.mod

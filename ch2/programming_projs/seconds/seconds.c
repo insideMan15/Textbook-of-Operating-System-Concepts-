@@ -4,9 +4,10 @@
 #include <linux/proc_fs.h>
 #include <linux/uaccess.h>
 #include <linux/jiffies.h>
+#include <asm/param.h>
 
 #define BUFFER_SIZE 128
-#define PROC_NAME "jiffies"
+#define PROC_NAME "Second"
 
 ssize_t proc_read(struct file *file, char __user *usr_buf, size_t count, loff_t *pos);
 
@@ -16,13 +17,13 @@ static struct proc_ops proc_ops = {
 
 int proc_init(void) {
 	proc_create(PROC_NAME, 0666, NULL, &proc_ops);
-	printk(KERN_INFO "Loading jiffies Module");
+	printk(KERN_INFO "Loading Second Module");
 	return 0;
 }
 
 void proc_exit(void) {
 	remove_proc_entry(PROC_NAME, NULL);
-	printk(KERN_INFO "Remove jiffies Module");
+	printk(KERN_INFO "Remove Second Module");
 }
 
 /*This function is called each time /proc/jiffies is read */
@@ -38,8 +39,9 @@ ssize_t proc_read(struct file *file, char __user *usr_buf, size_t count, loff_t 
 	
 	completed = 1;
 	
-	
-	rv = sprintf(buffer, "jiffies: %u\n", jiffies);
+	//unsigned int runS = 0;
+	//runS = jiffies / HZ;
+	rv = sprintf(buffer, "HZ:%u, jiffies: %u, run seconds: %u\n", HZ, jiffies, jiffies/HZ);
 	
 	copy_to_user(usr_buf, buffer, rv);
 	
@@ -50,6 +52,6 @@ module_init(proc_init);
 module_exit(proc_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_DESCRIPTION("Jiffies Module");
+MODULE_DESCRIPTION("Second Module");
 MODULE_AUTHOR("Tester");
 

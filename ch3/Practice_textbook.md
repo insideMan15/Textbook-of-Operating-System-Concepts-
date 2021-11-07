@@ -1,7 +1,6 @@
 **Practice Exercises**
 ***
-**3.1 Using the program shown in Figure 3.30, explain what the output will
-be at LINE A.**<br>
+**3.1 Using the program shown in Figure 3.30, explain what the output will be at LINE A.**<br>
 Discuss by different conditions<br>
 **Correction**<br>
 The result is still 5 as the child updates its copy of value. When control returns to the parent, its value remains at 5.

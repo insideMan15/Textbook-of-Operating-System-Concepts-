@@ -133,3 +133,110 @@ System clock synchronized: yes
 [    0.000000] BIOS-provided physical RAM map:
 ```
 
+**pstree**
+```
+-> % pstree
+systemd─┬─ModemManager───2*[{ModemManager}]
+        ├─NetworkManager───2*[{NetworkManager}]
+        ├─VGAuthService
+        ├─accounts-daemon───2*[{accounts-daemon}]
+        ├─acpid
+        ├─avahi-daemon───avahi-daemon
+        ├─bluetoothd
+        ├─colord───2*[{colord}]
+        ├─cron
+        ├─cups-browsed───2*[{cups-browsed}]
+        ├─cupsd───dbus
+        ├─dbus-daemon
+        ├─gdm3─┬─gdm-session-wor─┬─gdm-x-session─┬─Xorg───{Xorg}
+        │      │                 │               ├─gnome-session-b─┬─ssh-agent
+        │      │                 │               │                 └─2*[{gnome-session-b}]
+        │      │                 │               └─2*[{gdm-x-session}]
+        │      │                 └─2*[{gdm-session-wor}]
+        │      └─2*[{gdm3}]
+        ├─gnome-keyring-d───3*[{gnome-keyring-d}]
+        ├─2*[kerneloops]
+        ├─mysqld───36*[{mysqld}]
+        ├─networkd-dispat
+        ├─polkitd───2*[{polkitd}]
+        ├─rsyslogd───3*[{rsyslogd}]
+        ├─rtkit-daemon───2*[{rtkit-daemon}]
+        ├─snapd───7*[{snapd}]
+        ├─switcheroo-cont───2*[{switcheroo-cont}]
+        ├─systemd─┬─(sd-pam)
+        │         ├─at-spi-bus-laun─┬─dbus-daemon
+        │         │                 └─3*[{at-spi-bus-laun}]
+        │         ├─at-spi2-registr───2*[{at-spi2-registr}]
+        │         ├─dbus-daemon
+        │         ├─dconf-service───2*[{dconf-service}]
+        │         ├─evinced───2*[{evinced}]
+        │         ├─evolution-addre───5*[{evolution-addre}]
+        │         ├─evolution-calen───8*[{evolution-calen}]
+        │         ├─evolution-sourc───3*[{evolution-sourc}]
+        │         ├─gjs───4*[{gjs}]
+        │         ├─gnome-session-b─┬─evolution-alarm───5*[{evolution-alarm}]
+        │         │                 ├─gsd-disk-utilit───2*[{gsd-disk-utilit}]
+        │         │                 ├─update-notifier───3*[{update-notifier}]
+        │         │                 └─3*[{gnome-session-b}]
+        │         ├─gnome-session-c───{gnome-session-c}
+        │         ├─gnome-shell─┬─ibus-daemon─┬─ibus-engine-sim───2*[{ibus-engine-sim}]
+        │         │             │             ├─ibus-extension-───3*[{ibus-extension-}]
+        │         │             │             ├─ibus-memconf───2*[{ibus-memconf}]
+        │         │             │             └─2*[{ibus-daemon}]
+        │         │             └─6*[{gnome-shell}]
+        │         ├─gnome-shell-cal───5*[{gnome-shell-cal}]
+        │         ├─goa-daemon───3*[{goa-daemon}]
+        │         ├─goa-identity-se───2*[{goa-identity-se}]
+        │         ├─gsd-a11y-settin───3*[{gsd-a11y-settin}]
+        │         ├─gsd-color───3*[{gsd-color}]
+        │         ├─gsd-datetime───3*[{gsd-datetime}]
+        │         ├─gsd-housekeepin───3*[{gsd-housekeepin}]
+        │         ├─gsd-keyboard───3*[{gsd-keyboard}]
+        │         ├─gsd-media-keys───3*[{gsd-media-keys}]
+        │         ├─gsd-power───3*[{gsd-power}]
+        │         ├─gsd-print-notif───2*[{gsd-print-notif}]
+        │         ├─gsd-printer───2*[{gsd-printer}]
+        │         ├─gsd-rfkill───2*[{gsd-rfkill}]
+        │         ├─gsd-screensaver───2*[{gsd-screensaver}]
+        │         ├─gsd-sharing───3*[{gsd-sharing}]
+        │         ├─gsd-smartcard───4*[{gsd-smartcard}]
+        │         ├─gsd-sound───3*[{gsd-sound}]
+        │         ├─gsd-usb-protect───3*[{gsd-usb-protect}]
+        │         ├─gsd-wacom───2*[{gsd-wacom}]
+        │         ├─gsd-wwan───3*[{gsd-wwan}]
+        │         ├─gsd-xsettings───3*[{gsd-xsettings}]
+        │         ├─gvfs-afc-volume───3*[{gvfs-afc-volume}]
+        │         ├─gvfs-goa-volume───2*[{gvfs-goa-volume}]
+        │         ├─gvfs-gphoto2-vo───2*[{gvfs-gphoto2-vo}]
+        │         ├─gvfs-mtp-volume───2*[{gvfs-mtp-volume}]
+        │         ├─gvfs-udisks2-vo───3*[{gvfs-udisks2-vo}]
+        │         ├─gvfsd─┬─gvfsd-trash───2*[{gvfsd-trash}]
+        │         │       └─2*[{gvfsd}]
+        │         ├─gvfsd-fuse───5*[{gvfsd-fuse}]
+        │         ├─gvfsd-metadata───2*[{gvfsd-metadata}]
+        │         ├─ibus-portal───2*[{ibus-portal}]
+        │         ├─ibus-x11───2*[{ibus-x11}]
+        │         ├─pulseaudio───3*[{pulseaudio}]
+        │         ├─tracker-miner-f───4*[{tracker-miner-f}]
+        │         ├─vmtoolsd───{vmtoolsd}
+        │         ├─x-terminal-emul─┬─zsh───gedit───4*[{gedit}]
+        │         │                 ├─zsh───evince───6*[{evince}]
+        │         │                 ├─zsh───pstree
+        │         │                 └─4*[{x-terminal-emul}]
+        │         └─xdg-permission-───2*[{xdg-permission-}]
+        ├─systemd-journal
+        ├─systemd-logind
+        ├─systemd-resolve
+        ├─systemd-timesyn───{systemd-timesyn}
+        ├─systemd-udevd
+        ├─udisksd───4*[{udisksd}]
+        ├─unattended-upgr───{unattended-upgr}
+        ├─upowerd───2*[{upowerd}]
+        ├─vmtoolsd───{vmtoolsd}
+        ├─vmware-vmblock-───2*[{vmware-vmblock-}]
+        ├─whoopsie───2*[{whoopsie}]
+        └─wpa_supplicant
+
+```
+
+

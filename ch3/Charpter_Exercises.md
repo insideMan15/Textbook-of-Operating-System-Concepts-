@@ -22,9 +22,19 @@ Excuted when the child process is running.<br>
 - C: 2600
 - D: 2603<br>
 
-**3.14 Give an example of a situation in which ordinary pipes are more suitable than named pipes and an example of a situation in which named pipes are more suitable than ordinary pipes.**
-**3.8 Using the program shown in Figure 3.30, explain what the output will be at LINE A.**<br>
-**3.8 Using the program shown in Figure 3.30, explain what the output will be at LINE A.**<br>
+**3.14 Give an example of a situation in which ordinary pipes are more suitable than named pipes and an example of a situation in which named pipes are more suitable than ordinary pipes.**<br>
+- situation(ordinary > named):
+  - Unidirectional communication. 
+  - parent-child relationship for process required
+- situation(named > ordinary):
+  - a named pipe for serveral processes and serveral writers
+  - pipe is needed after communication terminated<br>
+  
+**3.15 Consider the RPC mechanism. Describe the undesirable consequences that could arise from not enforcing either the “at most once” or “exactly once” semantic. Describe possible uses for a mechanism that has neither of these guarantees.**<br>
+- possible consequences: when network problems occur, the RPC will executes requests repeatedly.<br>
+
+**3.16 Using the program shown in Figure 3.35, explain what the output will be at lines X and Y.**<br>
+
 **3.8 Using the program shown in Figure 3.30, explain what the output will be at LINE A.**<br>
 
 

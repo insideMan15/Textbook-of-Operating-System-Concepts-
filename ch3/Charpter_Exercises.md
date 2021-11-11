@@ -34,8 +34,15 @@ Excuted when the child process is running.<br>
 - possible consequences: when network problems occur, the RPC will executes requests repeatedly.<br>
 
 **3.16 Using the program shown in Figure 3.35, explain what the output will be at lines X and Y.**<br>
+- The code block after wait() will executed after all child processes finished. HOWEVER, the processes don't share memory.
+- LINE X: CHILD: 0 CHILD: -1 CHILD: -4 CHILD: -9 CHILD: -16
+- LINE Y: PARENT: 0 PARENT: 1 PARENT: 2 PARENT: 3 PARENT: 4
 
-**3.8 Using the program shown in Figure 3.30, explain what the output will be at LINE A.**<br>
+**3.17 What are the benefits and the disadvantages of each of the following?Consider both the system level and the programmer level.**<br>
+**a. Synchronous and asynchronous communication**<br>
+**b. Automatic and explicit buffering**<br>
+**c. Send by copy and send by reference**<br>
+**d. Fixed-sized and variable-sized messages**<br>
 
 
 

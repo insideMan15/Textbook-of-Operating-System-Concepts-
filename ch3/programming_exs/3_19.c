@@ -8,13 +8,15 @@
 int main() {
 	pid_t pid;
 	pid = fork();
-	int buff[BUFFER_SIZE];
+	int buffer[BUFFER_SIZE];
 	if (pid == 0 ) { /*child process*/
+		buffer[0] = 1;
 		fprintf("a zombie process: %u", pid);
 		return 0;
 	} else if(pid > 0){ /* parent process */
-		sleep(10);
-		fprintf("parent complete: %u", pid); /* LINE A */
+		wait(NULL);
+		int a = buffer[0];
+		fprintf("parent complete: %u", a); 
 		return 0;
 	}
 }

@@ -11,12 +11,12 @@ int main() {
 	int buffer[BUFFER_SIZE];
 	if (pid == 0 ) { /*child process*/
 		buffer[0] = 1;
-		fprintf("a zombie process: %u", pid);
+		printf("a zombie process: %u", pid);
 		return 0;
 	} else if(pid > 0){ /* parent process */
 		wait(NULL);
 		int a = buffer[0];
-		fprintf("parent complete: %u", a); 
+		printf("parent complete: %u", a); 
 		return 0;
 	}
 }

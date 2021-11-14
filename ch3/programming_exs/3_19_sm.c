@@ -26,8 +26,8 @@ int main(int argc, char* argv[]) {
 	} else if (pid > 0) {
 		nowStamp = tv.tv_sec;
 		wait(NULL);
-		printf("et: %lu \n", nowStamp);
-		printf("used time:%lu \n", (nowStamp-*startStamp)/1000);
+		//printf("et: %lu \n", nowStamp);
+		//printf("used time:%lu \n", (nowStamp-*startStamp)/1000);
 		return 0;
 	}
 }

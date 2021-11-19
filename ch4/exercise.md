@@ -26,6 +26,13 @@ Yes, for example the multithread solution in single-processor system as describe
 - 67 percent parallel with (a) two processing cores and (b) four processing core
 - 90 percent parallel with (a) four processing cores and (b) eight processing cores
 calculation results:
-- a:
+- a: 1.54 b: 1.6
+- a: 1.50 b: 2.01
+- a: 3.08 b: 4.71
 
-
+**4.15 Determine if the following problems exhibit task or data parallelism:**
+• Using a separate thread to generate a thumbnail for each photo in a collection
+• Transposing a matrix in parallel
+• A networked application where one thread reads from the network and another writes to the network
+• The fork-join array summation application described in Section 4.5.2
+• The Grand Central Dispatch system

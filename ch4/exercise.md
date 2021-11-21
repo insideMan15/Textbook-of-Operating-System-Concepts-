@@ -31,8 +31,47 @@ calculation results:
 - a: 3.08 b: 4.71
 
 **4.15 Determine if the following problems exhibit task or data parallelism:**
-• Using a separate thread to generate a thumbnail for each photo in a collection
-• Transposing a matrix in parallel
-• A networked application where one thread reads from the network and another writes to the network
-• The fork-join array summation application described in Section 4.5.2
-• The Grand Central Dispatch system
+• a. Using a separate thread to generate a thumbnail for each photo in a collection
+• b. Transposing a matrix in parallel
+• c. A networked application where one thread reads from the network and another writes to the network
+• d. The fork-join array summation application described in Section 4.5.2
+• e. The Grand Central Dispatch system
+task paralleism: a, c, e
+data paralleism: b, d, <br>
+
+**4.16 A system with two dual-core processors has four processors available for scheduling. A CPU-intensive application is running on this system. All input is performed at program start-up, when a single file must be opened. Similarly, all output is performed just before the program terminates, when the program results must be written to a single file. Between start-up and termination, the program is entirely CPU-bound. Your task is to improve the performance of this application by multithreading it. The application runs on a system that uses the one-to-one threading model (each user thread maps to a kernel thread)**
+• How many threads will you create to perform the input and output? Explain.
+• How many threads will you create for the CPU-intensive portion of the application? Explain.
+
+**4.17 Consider the following code segment:**
+```
+pid t pid;
+pid = fork();
+if (pid == 0) { /* child process */
+fork();
+thread create( . . .);
+}
+fork();
+```
+- a. How many unique processes are created? 4
+- b. How many unique threads are create
+
+**4.18 8 As described in Section 4.7.2, Linux does not distinguish between processes and threads. Instead, Linux treats both in the same way, allowing a task to be more akin to a process or a thread depending on the set of flags passed to the clone() system call. However, other operating systems, such as Windows, treat processes and threads differently. Typically, such systems use a notation in which the data structure for a process contains pointers to the separate threads belonging to the process. Contrast these
+two approaches for modeling processes and threads within the kernel**
+- Not ditinguishing easier for system design
+
+**4.19 The program shown in Figure 4.22 uses the Pthreads API. What would be the output from the program at LINE C and LINE P?**
+- LINE C: 5
+- LINE P: 0
+
+**4.20 Consider a multicore system and a multithreaded program written using the many-to-many threading model. Let the number of user-level threads in the program be greater than the number of processing cores in the system. Discuss the performance implications of the following scenarios.**
+- a. The number of kernel threads allocated to the program is less than the number of processing cores.
+- b. The number of kernel threads allocated to the program is equal to the number of processing cores.
+- c. The number of kernel threads allocated to the program is greater than the number of processing cores but less than the number of user-level threads.
+
+**4.21 Pthreads provides an API for managing thread cancellation. The pthread setcancelstate() function is used to set the cancellation
+state. Its prototype appears as follows:**
+```
+pthread setcancelstate(int state, int *oldstate)
+```
+The two possible values for the state are PTHREAD CANCEL ENABLE and PTHREAD CANCEL DISABLE. Using the code segment shown in Figure 4.24, provide examples of two operations that would be suitable to perform between the calls to disable and enable thread cancellation.

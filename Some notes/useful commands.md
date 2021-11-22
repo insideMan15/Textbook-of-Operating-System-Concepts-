@@ -239,4 +239,46 @@ systemd─┬─ModemManager───2*[{ModemManager}]
 
 ```
 
-
+***cat /proc/${PID}/status*
+```
+-> % cat /proc/26025/status 
+Name:	ns3
+State:	S (sleeping)
+Tgid:	26025
+Pid:	26025
+PPid:	1
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+Utrace:	0
+FDSize:	256
+Groups:	0 
+VmPeak:	 6021136 kB
+VmSize:	 6021136 kB
+VmLck:	       0 kB
+VmHWM:	 3239584 kB
+VmRSS:	 2084100 kB
+VmData:	 5963796 kB
+VmStk:	    2132 kB
+VmExe:	   40896 kB
+VmLib:	    3336 kB
+VmPTE:	    6912 kB
+VmSwap:	       0 kB
+Threads:	73
+SigQ:	1/515729
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000000000000
+SigCgt:	ffffffffffc1feff
+CapInh:	0000000000000000
+CapPrm:	ffffffffffffffff
+CapEff:	ffffffffffffffff
+CapBnd:	ffffffffffffffff
+Cpus_allowed:	ffff,ffffffff,ffffffff,ffffffff,ffffffff
+Cpus_allowed_list:	0-143
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000003
+Mems_allowed_list:	0-1
+voluntary_ctxt_switches:	2242587
+nonvoluntary_ctxt_switches:	235775
+```

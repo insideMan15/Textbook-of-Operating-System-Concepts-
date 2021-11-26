@@ -1,39 +1,13 @@
 **Practice Exercises**
 ***
-**4.1 Provide three programming examples in which multithreading provides better performance than a single-threaded solution**<br>
-- A: Multiple requests to a db 
-- B: User responsive apps
-- C: Independent tasks handling<br>
-**Answer**<br>
-- a. A web server that services each request in a separate thread
-- b. A parallelized application such as matrix multiplication where various parts of the matrix can be worked on in parallel
-- c. An interactive GUI program such as a debugger where one thread is used to monitor user input, another thread represents the running application, and a third thread monitors performance
-<br>
+**5.1 A CPU-scheduling algorithm determines an order for the execution of its scheduled processes. Given n processes to be scheduled on one processor, how many different schedules are possible? Give a formula in terms of n.**
+- Possible schedule strategies: FCFS, SJF, RR, Priority scheduling, Multilevel queue scheduling, EDF, Proportional share scheduling<br>
 
-**4.2 Using Amdahl's Law, calculate the speedup gain of an application that has a 60 percent parallel component for (a)two processing cores and (b) four processing cores.**<br>
-- a: 1/((1-0.4)+0.6/2) = 1.43
-- b: 1/((1-0.4)+0.6/4) = 1.82<br>
+**5.2 Explain the difference between preemptive and nonpreemptive scheduling.**<br>
+- preemptive: cpu can be taken away from a process
+- nonpreemtive: a process must voluntarily relinquish control of the cpu
 
-**4.3 Does the multithreaded web server described in Section 4.1 exhibit task or data parallelism?**<br>
-- Data parallelism. Each thread is performing the same task, but on different data. <br>
-
-**4.4 What are two differences between user-level threads and kernel-level threads? Under what circumstances is one type btwwer than the other?**
-**Answer**<br>
-- a: User-level threads are unknown by the kernel, whereas the kernel is aware of kernel threads
-- b: On systems using either many-to-one or many-to-many model mapping, user threads are scheduled by the thread library, and the kernel schedules kernel threads
-- c: Kernel threads need not be associated with a process, whereas every user thread belongs to a process. Kernel threads are generally more expensive to maintain than user threads, as they must be represented with a kernel data structure<br>
-
-**4.5 Describe the actions taken by a kernel to context-switch between kernellevel threads.**
-**Answer**<br>
-Context switching between kernel threads typically requires saving the value of the CPU registers from the thread being switched out and restoring the CPU registers of the new thread being scheduled.<br>
-
-**4.6 What resources are used when a thread is created? How do they differ from those used when a process is created?**<br>
-- Threads share data and code from the inital process.
-- By the new process created by fork(), which copied data and code from the parent process and separated from them.
-**Answer**<br>
-Because a thread is smaller than a process, thread creation typically uses fewer resources than process creation. Creating a process requires allocating a process control block (PCB), a rather large data structure. The PCB includes a memory map, a list of open les, and environment variables. Allocating and managing the memory map is typically the most time-consuming activity. Creating either a user thread or a kernel thread involves allocating a small data structure to hold a register set, stack, and priority
-
-**4.7 Assume that an OS maps user-level threads to the kernel using the many-to-many model and that the mapping is done through LWPs. Furthermore, the system allows developers to create real-time threads for use in real-time systems. Is it necessary to bind a real-time thread to an LWP? Explain**<br>
-- It's necessary because LWP is binded with kernel thread. Every user-level thread must be attached with a kernel thread to run.
-
-
+**5.3 Suppose that the following processes arrive for execution at the times indicated. Each processwill run for the amount of time listed. In answering the questions, use nonpreemptive scheduling, and base all decisions on the information you have at the time the decision must be made.**
+- a. What is the average turnaround time for these processes with the FCFS scheduling algorithm?
+- b. What is the average turnaround time for these processes with the SJF scheduling algorithm?
+- c. The SJF algorithm is supposed to improve performance, but notice that we chose to run process P1 at time 0 because we did not know that two shorter processes would arrive soon. Compute what the average turnaround time will be if the CPU is left idle for the first 1 unit and then SJF scheduling is used. Remember that processes P1 and P2 are waiting during this idle time, so their waiting time may increase. This algorithm could be known as future-knowledge scheduling.

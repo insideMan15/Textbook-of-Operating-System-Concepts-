@@ -64,3 +64,30 @@ Each process is assigned a numerical priority,with a higher number indicating a 
 
 **5.6 What advantage is there in having different time-quantum sizes at different levels of a multilevel queueing system?**
 - reduce the context-switching time
+
+**5.7 Many CPU-scheduling algorithms are parameterized. For example, the RR algorithm requires a parameter to indicate the time slice. Multilevel feedback queues require parameters to define the number of queues, the scheduling algorithms for each queue, the criteria used to move rocesses between queues, and so on.**<br>
+**These algorithms are thus really sets of algorithms (for example, the set of RR algorithms for all time slices, and so on). One set of algorithms may include another (for example, the FCFS algorithm is the RR algorithm with an infinite time quantum). What (if any) relation holds between the following pairs of algorithm sets?**
+- a. Priority and SJF
+  - SJF is giving less estimated "short process" with higher priority.  
+- b. Multilevel feedback queues and FCFS
+  - FCFS is used in each level queue of Multilevel feedback queues
+- c. Priority and FCFS
+  - Using FCFS for same priority processes   
+- d. RR and SJF
+  - SJF using RR to check whether to switch at each time slice
+
+
+**5.8 Suppose that a CPU scheduling algorithm favors those processes that have used the least processor time in the recent past. Why will this algorithm favor I/O-bound programs and yet not permanently starve CPU-bound programs?**
+- I/O bound programs used less processor time so it would be favored
+- It could switch to another program when the current running process is waiting I/O.
+
+**5.9 Distinguish between PCS and SCS scheduling**
+
+**5.10 The traditional UNIX scheduler enforces an inverse relationship between priority numbers and priorities: the higher the number, the lower the priority. The scheduler recalculates process priorities once per second
+using the following function:**
+  <br>Priority = (recent CPU usage / 2) + base
+**where base = 60 and recent CPU usage refers to a value indicating how often a process has used the CPU since priorities were last recalculated. Assume that recent CPU usage for process P1 is 40, for process P2 is 18, and for process P3 is 10. What will be the new priorities for these three processes when priorities are recalculated? Based on this information, does the traditional UNIX scheduler raise or lower the relative priority of a CPU-bound process?**
+- P1: 40/2 + 60 = 80
+- P2: 18/2 + 60 = 69
+- P3: 10/2 + 60 = 65
+- By such alogrithm, the cpu-bound process with higher recent CPU usage 

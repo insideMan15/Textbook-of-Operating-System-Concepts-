@@ -3,6 +3,9 @@
 **5.1 A CPU-scheduling algorithm determines an order for the execution of its scheduled processes. Given n processes to be scheduled on one processor, how many different schedules are possible? Give a formula in terms of n.**
 - Possible schedule strategies: FCFS, SJF, RR, Priority scheduling, Multilevel queue scheduling, EDF, Proportional share scheduling<br>
 
+***Correction***
+- n!
+
 **5.2 Explain the difference between preemptive and nonpreemptive scheduling.**<br>
 - preemptive: cpu can be taken away from a process
 - nonpreemtive: a process must voluntarily relinquish control of the cpu
@@ -16,6 +19,9 @@
 - b::(2+6+14)/3 = 7.3 
 - c::(2+6+13)/3 = 7
 
+***Correction***
+
+
 **5.4 Consider the following set of processes, with the length of the CPU burst time given in milliseconds:**
 The processes are assumed to have arrived in the order P1, P2, P3, P4, P5, all at time 0.<br>
 - a. Draw four Gantt charts that illustrate the execution of these processes using the following scheduling algorithms: FCFS, SJF, nonpreemptive priority (a larger priority number implies a higher priority), and RR (quantum = 2).
@@ -26,7 +32,7 @@ The processes are assumed to have arrived in the order P1, P2, P3, P4, P5, all a
 - a
   - FCFS: 0_P1_2_P2_3_P3_11_P4_15_P5_20
   - SJF: 0_P2_1_P2_3_P4_7_P5_12_P3_20
-  - nonpreemptive priority(larger priority by number): 0_P3_8_P2_9_P1_11_P4_15_P5_20
+  - nonpreemptive priority(larger priority by number): 0_P3_8_P2_9_P1_11_P4_15_P5_20 (false)
   - RR(quantum=2): 0_P1_2_P2_3_P3_5_P3_7_P3_9_P3_11_P4_13_P4_15_P5_17_P5_19_P5_20
 - b
   - FCFS: (2+3+11+15+20)/5 = 10.2
@@ -41,6 +47,17 @@ The processes are assumed to have arrived in the order P1, P2, P3, P4, P5, all a
 - d
   - SJF
 
+***Correction***
+- a
+ - nonpreemtive priority: 0_P3_8_P5_13_P1_15_P4_19_P2_20
+ - RR: 0_P1_2_P2_3_P3_5_P4_7_P5_9_P3_11_P4_13_P5_15_P3_17_P5_18_P3_20 (RR is that the process must release the cpu when its time slice finsihed)
+- b
+ - nonpreemtive priority: 8+13+15+19+20
+ - RR: 2+3+13+18+20
+- c
+ - nonpreemtive priority: 0+8+13+15+19
+ - RR: 0+2+9+12+13
+ 
 **5.5 The following processes are being scheduled using a preemptive, roundrobin scheduling algorithm.**
 Each process is assigned a numerical priority,with a higher number indicating a higher relative priority. In addition to the processes listed below, the system also has an idle task (which consumes no CPU resources and is identified as Pidle). This task has priority 0 and is scheduled whenever the system has no other available processes to run. The length of a time quantum is 10 units. If a process is preempted by a higher-priority process, the preempted process is placed at the end of the queue.
 - a. Show the scheduling order of the processes using a Gantt chart.
@@ -62,8 +79,20 @@ Each process is assigned a numerical priority,with a higher number indicating a 
 - d. What is the CPU utilization rate?
   - (20+25+25+15+10+10)/120 = 87.5%
 
+***Correction***
+- a
+  - 0_P1_10_P1_20_IDLE_25_P2_35_P3_45_P2_55_P3_60_P4_75_P2_80_P3_90_IDLE_100_P5_105_P6_115_P5_120
+- b
+  - P2: 55
+  - P3: 60
+- c
+  - P2: 40
+  - P3: 35   
+
 **5.6 What advantage is there in having different time-quantum sizes at different levels of a multilevel queueing system?**
 - reduce the context-switching time
+***Correction***
+- Giving different types of processes with differernt alogrithm for bettew service
 
 **5.7 Many CPU-scheduling algorithms are parameterized. For example, the RR algorithm requires a parameter to indicate the time slice. Multilevel feedback queues require parameters to define the number of queues, the scheduling algorithms for each queue, the criteria used to move rocesses between queues, and so on.**<br>
 **These algorithms are thus really sets of algorithms (for example, the set of RR algorithms for all time slices, and so on). One set of algorithms may include another (for example, the FCFS algorithm is the RR algorithm with an infinite time quantum). What (if any) relation holds between the following pairs of algorithm sets?**
@@ -75,7 +104,9 @@ Each process is assigned a numerical priority,with a higher number indicating a 
   - Using FCFS for same priority processes   
 - d. RR and SJF
   - SJF using RR to check whether to switch at each time slice
-
+***Correction***
+- c: FCFS gives the highest priority to the job that has been in existence the longest
+- d: none
 
 **5.8 Suppose that a CPU scheduling algorithm favors those processes that have used the least processor time in the recent past. Why will this algorithm favor I/O-bound programs and yet not permanently starve CPU-bound programs?**
 - I/O bound programs used less processor time so it would be favored

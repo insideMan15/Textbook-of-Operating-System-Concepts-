@@ -1,7 +1,7 @@
 **5.11 Of these two types of programs:**
 - a. I/O-bound
 - b. CPU-bound
-**which is more likely to have voluntary context switches, and which is more likely to have nonvoluntary context switches? Explain your answer.**
+<br>**which is more likely to have voluntary context switches, and which is more likely to have nonvoluntary context switches? Explain your answer.**<br>
 - I/O-bound is more likely to have voluntary context switches, because its occuping processor-time is less and always need to wait for long i/o. So such programs would often yield the cpu voluntarily.
 - CPU-bound is more likely to have nonvoluntary context switches, as it takes up cpu for long time. The context switches is always triggered by dispatcher, not itself.
 
@@ -9,7 +9,7 @@
 - a. CPU utilization and response time
 - b. Average turnaround time and maximum waiting time
 - c. I/O device utilization and CPU utilization
-**My answers**<br>
+<br>**My answers**<br>
 - a: To improve CPU utilization, a system need to reduce the context switches as it result in much cpu idle time. However, at the purpose of having less response time, the system need to handle more requests and reduce the total waiting time, where the context switches will increase.
 - b: Average turnaround time would improve the waiting time for the short processes but decrease the waiting time for the long processes. Maximum waiting time doesn't concern such balance.
 - c: A program couldn't do I/O and CPU at the same time. Higher CPU utilization means lower I/O device utilization, reversely too.

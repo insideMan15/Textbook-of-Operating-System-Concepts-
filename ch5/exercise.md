@@ -18,3 +18,13 @@
 - Giving higher-priority more lottery tickets.
 
 **5.14 Most scheduling algorithms maintain a run queue,which lists processes eligible to run on a processor. On multicore systems, there are two general options: (1) each processing core has its own run queue, or (2) a single run queue is shared by all processing cores. What are the advantages and disadvantages of each of these approaches?**
+- (1) 
+  - advantages: less race conditions for differenct processes
+  - disadvantages: reducing the total cpu utlization ratio
+- (2)
+  - advantages: improving the total cpu utlization (if a processor high load, the scheduler could assign jobs to other cores
+  - disadvantages: race condition
+
+**5.15 Consider the exponential average formula used to predict the length of the next CPU burst. What are the implications of assigning the following values to the parameters used by the algorithm?
+<br>a. α = 0 and τ0 = 100 milliseconds
+<br>b. α = 0.99 and τ0 = 10 milliseconds**

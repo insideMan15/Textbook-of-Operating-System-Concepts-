@@ -83,7 +83,7 @@ Each process is assigned a numerical priority,with a higher number indicating a 
 - d. Priority
 **Possible starvation: b, d**
 
-**5.21 Consider a variant of the RR scheduling algorithm in which the entries in the ready queue are pointers to the PCBs.
+**5.21 Consider a variant of the RR scheduling algorithm in which the entries in the ready queue are pointers to the PCBs.**
 - a. What would be the effect of putting two pointers to the same process in the ready queue?
 - b. What would be two major advantages and two disadvantages of this scheme?
-- c. Howwould youmodify the basic RR algorithm to achieve the same effect without the duplicate pointers?**
+- c. Howwould youmodify the basic RR algorithm to achieve the same effect without the duplicate pointers?

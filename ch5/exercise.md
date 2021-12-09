@@ -86,4 +86,66 @@ Each process is assigned a numerical priority,with a higher number indicating a 
 **5.21 Consider a variant of the RR scheduling algorithm in which the entries in the ready queue are pointers to the PCBs.**
 - a. What would be the effect of putting two pointers to the same process in the ready queue?
 - b. What would be two major advantages and two disadvantages of this scheme?
-- c. Howwould youmodify the basic RR algorithm to achieve the same effect without the duplicate pointers?
+- c. How would you modify the basic RR algorithm to achieve the same effect without the duplicate pointers?
+- **Try Answers**
+- PCB is used to save process state, putting two pointers to the same process cause unnecessary state saving and restoring. Duplicate pointers.
+
+**5.22 Consider a system running ten I/O-bound tasks and one CPU-bound task. Assume that the I/O-bound tasks issue an I/O operation once for every millisecond of CPU computing and that each I/O operation takes 10 milliseconds to complete. Also assume that the context-switching overhead is 0.1 millisecond and that all processes are long-running tasks. Describe the CPU utilization for a round-robin scheduler when:**
+- a. The time quantum is 1 millisecond   
+- b. The time quantum is 10 milliseconds
+- **Try Answers**
+- a: 1ms-time quantum is good for the I/O-bound tasks as the context switch happens frequently. It could ensure every task get proper CPU slice and avoid starvation.
+- b. 10ms-time quantum is good for the CPU-bound tasks. As the major tasks are I/O bound. In this system, the CPU maybe occupied by CPU-bound task for long time. Starvation may happens in some I/O-bound tasks.
+
+**5.23 Consider a system implementing multilevel queue scheduling. What strategy can a computer user employ to maximize the amount of CPU time allocated to the user’s process?**
+- Arrange the queue priority by the process running time, long-time process with higher priority
+
+**5.24 Consider a preemptive priority scheduling algorithm based on dynamically changing priorities. Larger priority numbers imply higher priority. When a process is waiting for the CPU (in the ready queue, but not running), its priority changes at a rate α. When it is running, its priority changes at a rate β. All processes are given a priority of 0 when they enter the ready queue. The parameters α and β can be set to give many different scheduling algorithms.**
+- a. What is the algorithm that results from β > α > 0?
+- b. What is the algorithm that results from α < β < 0?
+- a: Round-Robin, process get higher priority after execution. The running process cannot keep its running state.
+- b: priority preemptive. The running process would not down as its priority is always higher.
+
+**5.25 Explain the how the following scheduling algorithms discriminate either in favor of or against short processes:**
+- a. FCFS
+- b. RR
+- c. Multilevel feedback queues
+- **Try Answers**
+- a. FCFS could combines with short-first strategy or with long-first strategy to in favor of or discriminate short process.
+- b. RR could reduce the time quantum to in favor of short process or improve the time quantum to against short process.
+- c. Arrange the multilevel by estimated running time.
+
+**5.26 Describe why a shared ready queue might suffer from performance problems in an SMP environment.**
+- In SMP environment, each processor is self-scheduling We have a possible race condition on the shared ready queue and therefore must ensure that two separate processors do not choose to schedule the same thread and that threads are not lost from the queue.
+
+**5.27 Consider a load-balancing algorithm that ensures that each queue has approximately the same number of threads, independent of priority. How effectively would a priority-based scheduling algorithm handle this situation if one run queue had all high-priority threads and a second queue had all low-priority threads?**
+- Balancing the thread numbers of both queues, regardless of the priority.
+
+**5.28 Assume that an SMP system has private, per-processor run queues. When a new process is created, it can be placed in either the same queue as the parent process or a separate queue.**
+- a. What are the benefits of placing the new process in the same queue as its parent?
+- b. What are the benefits of placing the new process in a different queue?
+- **Try Answers**
+- a: Better for the new process to share resources with its parent
+- b. The new process could run faster without a competitor(the parent process).
+
+**5.29 Assume that a thread has blocked for network I/O and is eligible to run again. Describe why a NUMA-aware scheduling algorithm should reschedule the thread on the same CPU on which it previously ran.**
+- Migrating a thread between processors may incur a penalty on NUMAsystems, where a thread may be moved to a processor
+that requires longer memory access times.
+- The benefit of keeping a thread running on the same processor is that the thread can take advantage of its data being in that processor’s cache memory.
+
+**5.30 Using the Windows scheduling algorithm, determine the numeric priority of each of the following threads.**
+- a. A thread in the REALTIME PRIORITY CLASS with a relative priority of NORMAL
+- b. A thread in the ABOVE NORMAL PRIORITY CLASS with a relative priority of HIGHEST
+- c. A thread in the BELOW NORMAL PRIORITY CLASS with a relative priority of ABOVE NORMAL
+
+**5.31 Assuming that no threads belong to the REALTIME PRIORITY CLASS and that none may be assigned a TIME CRITICAL priority, what combination of priority class and priority corresponds to the highest possible relative priority inWindows scheduling?**
+
+**5.32 Consider the scheduling algorithm in the Solaris operating system for time-sharing threads.**
+- a. What is the time quantum (in milliseconds) for a thread with priority 15? With priority 40?
+- b. Assume that a thread with priority 50 has used its entire time quantum without blocking. What new priority will the scheduler assign this thread?
+- c. Assume that a thread with priority 20 blocks for I/O before its time quantum has
+
+**5.33 Assume that two tasks, A and B, are running on a Linux system. The nice values of A and B are −5 and +5, respectively. Using the CFS scheduler as a guide, describe how the respective values of vruntime vary between the two processes given each of the following scenarios:**
+- Both A and B are CPU-bound.
+- A is I/O-bound, and B is CPU-bound.
+- A is CPU-bound, and B is I/O-bound.

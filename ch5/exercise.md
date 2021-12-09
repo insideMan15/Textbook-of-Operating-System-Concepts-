@@ -149,3 +149,20 @@ that requires longer memory access times.
 - Both A and B are CPU-bound.
 - A is I/O-bound, and B is CPU-bound.
 - A is CPU-bound, and B is I/O-bound.
+- **Try Answers**
+- vruntime: A < B, reason: priority
+- vruntime: A << B, reason: priority, A has short CPU-execution period and with higher priority.
+- vruntime: A > B: reason: I/O bound with short CPU-period whereas the CPU-bound will exhaust its time period.
+
+**5.34 Provide a specific circumstance that illustrates where rate-monotonic scheduling is inferior to earliest-deadline-first scheduling in meeting real-time process deadlines?**
+- A system that must response every request in the given time limit, where no time-out is important than running fast.
+
+**5.35 Consider two processes, P1 and P2, where p1 = 50, t1 = 25, p2 = 75, and t2 = 30.**
+- a. Can these two processes be scheduled using rate-monotonic scheduling? Illustrate your answer using a Gantt chart such as the ones in Figure 5.21–Figure 5.24. 
+- b. Illustrate the scheduling of these two processes using earliest-deadline-first (EDF) scheduling.
+- **Try Answers**
+- a. No. The rate-monotonic schedules using a static priority policy. Either P1 or P2 run first, the other one couln't finish before the deadline.
+
+**5.36 Explain why interrupt and dispatch latency times must be bounded in a hard real-time system.**
+
+**5.37 Describe the advantages of using heterogeneous multiprocessing in a mobile system.**

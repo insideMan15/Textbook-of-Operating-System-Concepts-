@@ -155,14 +155,19 @@ that requires longer memory access times.
 - vruntime: A > B: reason: I/O bound with short CPU-period whereas the CPU-bound will exhaust its time period.
 
 **5.34 Provide a specific circumstance that illustrates where rate-monotonic scheduling is inferior to earliest-deadline-first scheduling in meeting real-time process deadlines?**
-- A system that must response every request in the given time limit, where no time-out is important than running fast.
+- A system that must response every request before the deadline, where no time-out is more important than running fast.
 
 **5.35 Consider two processes, P1 and P2, where p1 = 50, t1 = 25, p2 = 75, and t2 = 30.**
 - a. Can these two processes be scheduled using rate-monotonic scheduling? Illustrate your answer using a Gantt chart such as the ones in Figure 5.21–Figure 5.24. 
 - b. Illustrate the scheduling of these two processes using earliest-deadline-first (EDF) scheduling.
 - **Try Answers**
-- a. No. The rate-monotonic schedules using a static priority policy. Either P1 or P2 run first, the other one couln't finish before the deadline.
+- a. No. rate-monotonic assign p1 higher priority than p2, where p2 will miss the first deadline:::0_P1_25_P2_50_P1_75_P2_80
+- b. 0_P1_25_P2_55_P1_80_P2_110_P1_135_P2_165
 
 **5.36 Explain why interrupt and dispatch latency times must be bounded in a hard real-time system.**
+- Hard real-time systems have stricter requirements. Atask must be serviced by its deadline; service after the deadline has expired is the same as no service at all.
 
 **5.37 Describe the advantages of using heterogeneous multiprocessing in a mobile system.**
+- assign low performance demanding tasks like background tasks to little cores, to preserve a battery charge
+- assign interactive but short-running apps to big cores
+- if the mobile device is in a power-saving mode, energy-intensive big cores can be disabled and the system can rely solely on energy-efficient little cores

@@ -19,3 +19,31 @@ This has the effect of summing the elements in the array as a series of partial 
 
 **6.10 The compare and swap() instruction can be used to design lock-free data structures such as stacks, queues, and lists. The program example shown in Figure 6.17 presents a possible solution to a lock-free stack using CAS instructions, where the stack is represented as a linked list of Node elements with top representing the top of the stack. Is this implementation free from race conditions?**
 
+**6.11 One approach for using compare and swap() for implementing a spinlock is as follows:***
+```
+void lock spinlock(int *lock) {
+  while (compare and swap(lock, 0, 1) != 0)
+    ; /* spin */
+}
+```
+**A suggested alternative approach is to use the “compare and compareand-swap” idiom, which checks the status of the lock before invoking the compare and swap() operation. (The rationale behind this approach is to invoke compare and swap()only if the lock is currently available.) This strategy is shown below:**
+```
+void lock spinlock(int *lock) {
+{
+  while (true) {
+  if (*lock == 0) {
+    /* lock appears to be available */
+    if (!compare and swap(lock, 0, 1))
+      break;
+    }
+  }
+}
+```
+Does this “compare and compare-and-swap” idiom work appropriately for implementing spinlocks? If so, explain. If not, illustrate how the integrity of the lock is compromised.
+
+**6.12 Some semaphore implementations provide a function getValue() that returns the current value of a semaphore. This functionmay, for instance, be invoked prior to calling wait() so that a process will only call wait() if the value of the semaphore is > 0, thereby preventing blocking while waiting for the semaphore. For example:
+```
+  if (getValue(&sem) > 0)
+    wait(&sem);
+```
+Many developers argue against such a function and discourage its use. Describe a potential problem that could occur when using the function getValue() in this scenario.**

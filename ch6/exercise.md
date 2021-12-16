@@ -41,9 +41,9 @@ void lock spinlock(int *lock) {
 ```
 Does this “compare and compare-and-swap” idiom work appropriately for implementing spinlocks? If so, explain. If not, illustrate how the integrity of the lock is compromised.
 
-**6.12 Some semaphore implementations provide a function getValue() that returns the current value of a semaphore. This functionmay, for instance, be invoked prior to calling wait() so that a process will only call wait() if the value of the semaphore is > 0, thereby preventing blocking while waiting for the semaphore. For example:
+**6.12 Some semaphore implementations provide a function getValue() that returns the current value of a semaphore. This functionmay, for instance, be invoked prior to calling wait() so that a process will only call wait() if the value of the semaphore is > 0, thereby preventing blocking while waiting for the semaphore. For example:**
 ```
   if (getValue(&sem) > 0)
     wait(&sem);
 ```
-Many developers argue against such a function and discourage its use. Describe a potential problem that could occur when using the function getValue() in this scenario.**
+Many developers argue against such a function and discourage its use. Describe a potential problem that could occur when using the function getValue() in this scenario.

@@ -46,4 +46,21 @@ Does this “compare and compare-and-swap” idiom work appropriately for implem
   if (getValue(&sem) > 0)
     wait(&sem);
 ```
-Many developers argue against such a function and discourage its use. Describe a potential problem that could occur when using the function getValue() in this scenario.
+**Many developers argue against such a function and discourage its use. Describe a potential problem that could occur when using the function getValue() in this scenario.**
+
+**6.13 The first known correct software solution to the critical-section problem for two processes was developed by Dekker. The two processes, P0 and P1, share the following variables:**
+```
+  boolean flag[2]; /* initially false */
+  int turn;
+```
+**The structure of process Pi (i == 0 or 1) is shown in Figure 6.18. The other process is Pj (j == 1 or 0). Prove that the algorithm satisfies all three requirements for the critical-section problem.**
+
+**6.14 The first known correct software solution to the critical-section problem for n processes with a lower bound on waiting of n − 1 turns was presented by Eisenberg andMcGuire. The processes share the following variables:**
+```
+enum pstate {idle, want in, in cs};
+pstate flag[n];
+int turn;
+```
+**All the elements of flag are initially idle. The initial value of turn is immaterial (between 0 and n-1). The structure of process Pi is shown in Figure 6.19. Prove that the algorithm satisfies all three requirements for the critical-section problem.**
+
+**6.15 Explain why implementing synchronization primitives by disabling interrupts is not appropriate in a single-processor system if the synchronization primitives are to be used in user-level programs.**

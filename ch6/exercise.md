@@ -64,3 +64,50 @@ int turn;
 **All the elements of flag are initially idle. The initial value of turn is immaterial (between 0 and n-1). The structure of process Pi is shown in Figure 6.19. Prove that the algorithm satisfies all three requirements for the critical-section problem.**
 
 **6.15 Explain why implementing synchronization primitives by disabling interrupts is not appropriate in a single-processor system if the synchronization primitives are to be used in user-level programs.**
+
+**6.16 Consider how to implement a mutex lock using the compare and swap() instruction. Assume that the following structure defining the mutex lock is available:**
+```
+typedef struct {
+int available;
+} lock;
+```
+**The value (available == 0) indicates that the lock is available, and a value of 1 indicates that the lock is unavailable. Using this struct, illustrate how the following functions can be implemented using the compare and swap() instruction:**
+- ```void acquire(lock *mutex)```
+- ```void release(lock *mutex)```<br>
+**Be sure to include any initialization that may be necessary.**
+
+**6.17 Explain why interrupts are not appropriate for implementing synchronization primitives in multiprocessor systems.**
+
+**6.18 The implementation of mutex locks provided in Section 6.5 suffers from busy waiting. Describe what changes would be necessary so that a process waiting to acquire a mutex lock would be blocked and placed into a waiting queue until the lock became available.**
+
+**6.19 Assume that a system has multiple processing cores. For each of the following scenarios, describe which is a better locking mechanism—a spinlock or a mutex lock where waiting processes sleep while waiting for the lock to become available:**
+- The lock is to be held for a short duration.
+- The lock is to be held for a long duration.
+- Athread may be put to sleep while holding the lock.
+
+**6.20 Assume that a context switch takes T time. Suggest an upper bound (in terms of T) for holding a spinlock. If the spinlock is held for any longer, a mutex lock (where waiting threads are put to sleep) is a better alternative.**
+
+**6.21 A multithreaded web server wishes to keep track of the number of requests it services (known as hits). Consider the two following strategies to prevent a race condition on the variable hits. The first strategy is to use a basic mutex lock when updating hits:**
+```
+int hits;
+mutex lock hit lock;
+hit lock.acquire();
+hits++;
+hit lock.release();
+```
+**Asecond strategy is to use an atomic integer:**
+```
+atomic t hits;
+atomic inc(&hits);
+```
+**Explain which of these two strategies is more efficient.**
+
+**6.20 Consider the code example for allocating and releasing processes shown  in Figure 6.20.**
+- a. Identify the race condition(s).
+- b. Assume you have a mutex lock named mutex with the operations acquire() and release(). Indicatewhere the locking needs to be
+placed to prevent the race condition(s).
+- c. Could we replace the integer variable 
+      <br>```int number of processes = 0```<br>
+   with the atomic 
+     <br>```integer atomic t number of processes = 0```<br>
+  to prevent the race condition(s)?

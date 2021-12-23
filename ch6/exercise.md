@@ -1,6 +1,17 @@
 **6.7 The pseudocode of Figure 6.15 illustrates the basic push() and pop() operations of an array-based stack. Assuming that this algorithm could be used in a concurrent environment, answer the following questions:**
 - a. What data have a race condition?
 - b. How could the race condition be fixed?
+<br>**Answers**
+- a. the variable top. Assume that the top was 3, a push() and a pop() ran simultaneously with such order.
+```
+stack = {1,2,3,0,0} //---> top = 3
+stack[3] = 4 //---> {1,2,3,4,0}, top=3
+top-- //---> {1,2,3,4,0}, top=2
+return stack[top] //---> {1,2,3,4,0}, top=2, return 3
+top++ //---> {1,2,3,4,0}, top=3
+```
+- b. (1) add mutex lock to top, the value update execution should ask for the mutex lock first and then exectued the update. 
+- b. (2) atomical exectuion of top
 
 **6.8 Race conditions are possible in many computer systems. Consider an online auction system where the current highest bid for each item must be maintained. A person who wishes to bid on an item calls the bid(amount) function, which compares the amount being bid to the current highest bid. If the amount exceeds the current highest bid, the highest bid is set to the new amount. This is illustrated below: Describe how a race condition is possible in this situation and what might be done to prevent the race condition from occurring.**
 

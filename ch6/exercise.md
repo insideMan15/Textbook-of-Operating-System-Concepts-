@@ -14,6 +14,12 @@ top++ //---> {1,2,3,4,0}, top=3
 - b. (2) atomical exectuion of top
 
 **6.8 Race conditions are possible in many computer systems. Consider an online auction system where the current highest bid for each item must be maintained. A person who wishes to bid on an item calls the bid(amount) function, which compares the amount being bid to the current highest bid. If the amount exceeds the current highest bid, the highest bid is set to the new amount. This is illustrated below: Describe how a race condition is possible in this situation and what might be done to prevent the race condition from occurring.**
+```
+void bid(double amount) {
+  if (amount > highestBid)
+  highestBid = amount;
+}
+```
 
 **6.9 The following program example can be used to sum the array values of size N elements in parallel on a system containing N computing cores
 (there is a separate processor for each array element):**

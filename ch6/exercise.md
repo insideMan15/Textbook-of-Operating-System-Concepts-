@@ -17,9 +17,11 @@ top++ //---> {1,2,3,4,0}, top=3
 ```
 void bid(double amount) {
   if (amount > highestBid)
-  highestBid = amount;
+    highestBid = amount;
 }
 ```
+<br>**Answers**
+Assume two thread A and B run concurrently(both amount greater than the highestBid), it is possible that A and B execute if-condition simulatouesly, A updated the highestBid first but then is replaced by B, where the highestBid becomes 90. The correct value should be 100. It could be solved by adding a mutex-lock for bid().
 
 **6.9 The following program example can be used to sum the array values of size N elements in parallel on a system containing N computing cores
 (there is a separate processor for each array element):**

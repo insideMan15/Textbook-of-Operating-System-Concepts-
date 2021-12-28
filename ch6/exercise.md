@@ -20,6 +20,7 @@ void bid(double amount) {
     highestBid = amount;
 }
 ```
+
 <br>**Answers**<br>
 Assume two thread A and B run concurrently(both amount greater than the highestBid), it is possible that A and B execute if-condition simulatouesly, A updated the highestBid first but then is replaced by B, where the highestBid becomes 90. The correct value should be 100. It could be solved by adding a mutex-lock for bid().
 

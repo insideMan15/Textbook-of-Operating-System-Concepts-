@@ -1,7 +1,7 @@
 **6.7 The pseudocode of Figure 6.15 illustrates the basic push() and pop() operations of an array-based stack. Assuming that this algorithm could be used in a concurrent environment, answer the following questions:**
 - a. What data have a race condition?
 - b. How could the race condition be fixed?
-<br>**Answers**
+<br>**Answers**<br>
 - a. the variable top. Assume that the top was 3, a push() and a pop() ran simultaneously with such order.
 ```
 stack = {1,2,3,0,0} //---> top = 3
@@ -20,13 +20,12 @@ void bid(double amount) {
     highestBid = amount;
 }
 ```
-<br>**Answers**
+<br>**Answers**<br>
 Assume two thread A and B run concurrently(both amount greater than the highestBid), it is possible that A and B execute if-condition simulatouesly, A updated the highestBid first but then is replaced by B, where the highestBid becomes 90. The correct value should be 100. It could be solved by adding a mutex-lock for bid().
 
-**6.9 The following program example can be used to sum the array values of size N elements in parallel on a system containing N computing cores
-(there is a separate processor for each array element):**
+**6.9 The following program example can be used to sum the array values of size N elements in parallel on a system containing N computing cores (there is a separate processor for each array element):**
 ```
-for j = 1 to log 2(N) {
+for j = 1 to log_2(N) {
   for k = 1 to N {
     if ((k + 1) % pow(2,j) == 0) {
       values[k] += values[k - pow(2,(j-1))]
@@ -35,9 +34,12 @@ for j = 1 to log 2(N) {
 }
 ```
 **This has the effect of summing the elements in the array as a series of partial sums, as shown in Figure 6.16. After the code has executed, the sum of all elements in the array is stored in the last array location. Are there any race conditions in the above code example? If so, identify where they occur and illustrate with an example. If not, demonstrate why this algorithm is free from race conditions.**
+<br>**Answers**<br>
+NO race conditions. Because no data sharing exists between processors, each array has own processors.
 
-**6.10 The compare and swap() instruction can be used to design lock-free data structures such as stacks, queues, and lists. The program example shown in Figure 6.17 presents a possible solution to a lock-free stack using CAS instructions, where the stack is represented as a linked list of Node elements with top representing the top of the stack. Is this implementation free from race conditions?**
-
+**6.10 The compare_and_swap() instruction can be used to design lock-free data structures such as stacks, queues, and lists. The program example shown in Figure 6.17 presents a possible solution to a lock-free stack using CAS instructions, where the stack is represented as a linked list of Node elements with top representing the top of the stack. Is this implementation free from race conditions?**
+<br>**Answers**<br>
+It is free from race condition as both the push() and pop() are CAS instructions.
 **6.11 One approach for using compare and swap() for implementing a spinlock is as follows:***
 ```
 void lock spinlock(int *lock) {

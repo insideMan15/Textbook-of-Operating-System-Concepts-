@@ -40,15 +40,16 @@ NO race conditions. Because no data sharing exists between processors, each arra
 
 **6.10 The compare_and_swap() instruction can be used to design lock-free data structures such as stacks, queues, and lists. The program example shown in Figure 6.17 presents a possible solution to a lock-free stack using CAS instructions, where the stack is represented as a linked list of Node elements with top representing the top of the stack. Is this implementation free from race conditions?**
 <br>**Answers**<br>
-It is free from race condition as both the push() and pop() are CAS instructions.
-**6.11 One approach for using compare and swap() for implementing a spinlock is as follows:***
+It is free from race condition as both the push() and pop() are CAS instructions.<br>
+
+**6.11 One approach for using compare_and_swap() for implementing a spinlock is as follows:***
 ```
 void lock spinlock(int *lock) {
   while (compare and swap(lock, 0, 1) != 0)
     ; /* spin */
 }
 ```
-**A suggested alternative approach is to use the “compare and compareand-swap” idiom, which checks the status of the lock before invoking the compare and swap() operation. (The rationale behind this approach is to invoke compare and swap()only if the lock is currently available.) This strategy is shown below:**
+**A suggested alternative approach is to use the “compare and compare-and-swap” idiom, which checks the status of the lock before invoking the compare_and_swap() operation. (The rationale behind this approach is to invoke compare_and_swap() only if the lock is currently available.) This strategy is shown below:**
 ```
 void lock spinlock(int *lock) {
 {
@@ -61,9 +62,9 @@ void lock spinlock(int *lock) {
   }
 }
 ```
-Does this “compare and compare-and-swap” idiom work appropriately for implementing spinlocks? If so, explain. If not, illustrate how the integrity of the lock is compromised.
+**Does this “compare and compare-and-swap” idiom work appropriately for implementing spinlocks? If so, explain. If not, illustrate how the integrity of the lock is compromised.**
 
-**6.12 Some semaphore implementations provide a function getValue() that returns the current value of a semaphore. This functionmay, for instance, be invoked prior to calling wait() so that a process will only call wait() if the value of the semaphore is > 0, thereby preventing blocking while waiting for the semaphore. For example:**
+**6.12 Some semaphore implementations provide a function getValue() that returns the current value of a semaphore. This function may, for instance, be invoked prior to calling wait() so that a process will only call wait() if the value of the semaphore is > 0, thereby preventing blocking while waiting for the semaphore. For example:**
 ```
   if (getValue(&sem) > 0)
     wait(&sem);
@@ -87,13 +88,13 @@ int turn;
 
 **6.15 Explain why implementing synchronization primitives by disabling interrupts is not appropriate in a single-processor system if the synchronization primitives are to be used in user-level programs.**
 
-**6.16 Consider how to implement a mutex lock using the compare and swap() instruction. Assume that the following structure defining the mutex lock is available:**
+**6.16 Consider how to implement a mutex lock using the compare_and_swap() instruction. Assume that the following structure defining the mutex lock is available:**
 ```
 typedef struct {
 int available;
 } lock;
 ```
-**The value (available == 0) indicates that the lock is available, and a value of 1 indicates that the lock is unavailable. Using this struct, illustrate how the following functions can be implemented using the compare and swap() instruction:**
+**The value (available == 0) indicates that the lock is available, and a value of 1 indicates that the lock is unavailable. Using this struct, illustrate how the following functions can be implemented using the compare_and_swap() instruction:**
 - ```void acquire(lock *mutex)```
 - ```void release(lock *mutex)```<br>
 **Be sure to include any initialization that may be necessary.**

@@ -63,6 +63,9 @@ void lock spinlock(int *lock) {
 }
 ```
 **Does this “compare and compare-and-swap” idiom work appropriately for implementing spinlocks? If so, explain. If not, illustrate how the integrity of the lock is compromised.**
+<br>**Try Answers**<br>
+Ths "compare and compare-and-swap" seems to be useless. Possible reasons:
+- "compare" is not atomical
 
 **6.12 Some semaphore implementations provide a function getValue() that returns the current value of a semaphore. This function may, for instance, be invoked prior to calling wait() so that a process will only call wait() if the value of the semaphore is > 0, thereby preventing blocking while waiting for the semaphore. For example:**
 ```
@@ -70,6 +73,9 @@ void lock spinlock(int *lock) {
     wait(&sem);
 ```
 **Many developers argue against such a function and discourage its use. Describe a potential problem that could occur when using the function getValue() in this scenario.**
+<br>**Try Answers**<br>
+- The bounded-waiting requirement is not met in such scenario, because wait() is allowed to call only when semaphore > 0
+- according to the second requirement, some processes could'n get the lock because it is excluded from the reminder section
 
 **6.13 The first known correct software solution to the critical-section problem for two processes was developed by Dekker. The two processes, P0 and P1, share the following variables:**
 ```
@@ -77,6 +83,11 @@ void lock spinlock(int *lock) {
   int turn;
 ```
 **The structure of process Pi (i == 0 or 1) is shown in Figure 6.18. The other process is Pj (j == 1 or 0). Prove that the algorithm satisfies all three requirements for the critical-section problem.**
+<br>**Try proving process**<br>
+- 1. Mutual exclusion
+- 2. Progress
+- 3. Bounded waiting
+
 
 **6.14 The first known correct software solution to the critical-section problem for n processes with a lower bound on waiting of n − 1 turns was presented by Eisenberg andMcGuire. The processes share the following variables:**
 ```

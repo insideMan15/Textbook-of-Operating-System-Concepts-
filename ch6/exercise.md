@@ -84,9 +84,9 @@ Ths "compare and compare-and-swap" seems to be useless. Possible reasons:
 ```
 **The structure of process Pi (i == 0 or 1) is shown in Figure 6.18. The other process is Pj (j == 1 or 0). Prove that the algorithm satisfies all three requirements for the critical-section problem.**
 <br>**Try proving process**<br>
-- 1. Mutual exclusion
-- 2. Progress
-- 3. Bounded waiting
+- 1. Mutual exclusion: only the process get the turn could be executed(only one)
+- 2. Progress: the entry selection is not indefinitely
+- 3. Bounded waiting: if one process finishes the critical-section, it will yield the entry of critical-selection to the other process.
 
 
 **6.14 The first known correct software solution to the critical-section problem for n processes with a lower bound on waiting of n − 1 turns was presented by Eisenberg andMcGuire. The processes share the following variables:**

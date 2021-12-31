@@ -96,19 +96,39 @@ pstate flag[n];
 int turn;
 ```
 **All the elements of flag are initially idle. The initial value of turn is immaterial (between 0 and n-1). The structure of process Pi is shown in Figure 6.19. Prove that the algorithm satisfies all three requirements for the critical-section problem.**
+<br>**Try proving process**<br>
 
 **6.15 Explain why implementing synchronization primitives by disabling interrupts is not appropriate in a single-processor system if the synchronization primitives are to be used in user-level programs.**
+<br>**Try Answers**<br>
+The system clock is updated at every clock interrupt. If interrupts were disabled—particularly for a long period of time— the system clock could easily lose the correct time. The system clock is also used for scheduling purposes.
 
 **6.16 Consider how to implement a mutex lock using the compare_and_swap() instruction. Assume that the following structure defining the mutex lock is available:**
 ```
 typedef struct {
-int available;
+  int available;
 } lock;
 ```
 **The value (available == 0) indicates that the lock is available, and a value of 1 indicates that the lock is unavailable. Using this struct, illustrate how the following functions can be implemented using the compare_and_swap() instruction:**
 - ```void acquire(lock *mutex)```
 - ```void release(lock *mutex)```<br>
 **Be sure to include any initialization that may be necessary.**
+```
+waiting[n]
+
+void acquire(lock *mutex) {
+  while(true) {
+    waiting[i] = true;
+    while(waiting && compare_and_swap(&lock.available, 0, 1) != 0） 
+      ;/* do nothing */
+    waiting[i] = false;
+  }
+}
+
+void release(lock *mutex) {
+  lock.available = 0;
+  waiting[i] = true;
+}
+```
 
 **6.17 Explain why interrupts are not appropriate for implementing synchronization primitives in multiprocessor systems.**
 

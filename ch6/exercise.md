@@ -112,6 +112,7 @@ typedef struct {
 - ```void acquire(lock *mutex)```
 - ```void release(lock *mutex)```<br>
 **Be sure to include any initialization that may be necessary.**
+<br>**Try Answers**<br>
 ```
 waiting[n]
 
@@ -131,14 +132,20 @@ void release(lock *mutex) {
 ```
 
 **6.17 Explain why interrupts are not appropriate for implementing synchronization primitives in multiprocessor systems.**
+<br>Instructions from different process(running on different cores) may be interleaved in some arbitrary way.
 
 **6.18 The implementation of mutex locks provided in Section 6.5 suffers from busy waiting. Describe what changes would be necessary so that a process waiting to acquire a mutex lock would be blocked and placed into a waiting queue until the lock became available.**
+<br>**Try Answers**<br>
+using contended block..
 
 **6.19 Assume that a system has multiple processing cores. For each of the following scenarios, describe which is a better locking mechanism—a spinlock or a mutex lock where waiting processes sleep while waiting for the lock to become available:**
-- The lock is to be held for a short duration.
-- The lock is to be held for a long duration.
-- Athread may be put to sleep while holding the lock.
-
+- a. The lock is to be held for a short duration.
+- b. The lock is to be held for a long duration.
+- c. A thread may be put to sleep while holding the lock.
+<br>**Try Answers**<br>
+- a. a spinlock
+- b. a mutex-lock
+- c. 
 **6.20 Assume that a context switch takes T time. Suggest an upper bound (in terms of T) for holding a spinlock. If the spinlock is held for any longer, a mutex lock (where waiting threads are put to sleep) is a better alternative.**
 
 **6.21 A multithreaded web server wishes to keep track of the number of requests it services (known as hits). Consider the two following strategies to prevent a race condition on the variable hits. The first strategy is to use a basic mutex lock when updating hits:**

@@ -147,10 +147,12 @@ using contended block..
 - b. a mutex-lock --> As lock is to be held for a long duration, busy waiting wastes cpu cycles.
 - c. a mutex-lock --> The lock would be held for long time, busy waiting is inappropriate.
 <br>
+
 **6.20 Assume that a context switch takes T time. Suggest an upper bound (in terms of T) for holding a spinlock. If the spinlock is held for any longer, a mutex lock (where waiting threads are put to sleep) is a better alternative.**
 <br>**Try Answers**<br>
-**2T**Given that waiting on a lock requires two context switches—a context switch to move the thread to the waiting state and a second context switch to restore the waiting thread once the lock becomes available—the general rule is to use a spinlock if the lock will be held for a duration of less than two context switches.
+**2T..** Given that waiting on a lock requires two context switches—a context switch to move the thread to the waiting state and a second context switch to restore the waiting thread once the lock becomes available—the general rule is to use a spinlock if the lock will be held for a duration of less than two context switches.
 <br>
+
 **6.21 A multithreaded web server wishes to keep track of the number of requests it services (known as hits). Consider the two following strategies to prevent a race condition on the variable hits. The first strategy is to use a basic mutex lock when updating hits:**
 ```
 int hits;
@@ -178,7 +180,7 @@ placed to prevent the race condition(s).
 
 **6.23 Servers can be designed to limit the number of open connections. For example, a server may wish to have only N socket connections at any point in time. As soon as N connections are made, the server will not accept another incoming connection until an existing connection is released. Illustrate how semaphores can be used by a server to limit the number of concurrent connections.**
 
-**6.24 In Section 6.7, we use the following illustration as an incorrect use of semaphores to solve the critical-section problem:
+**6.24 In Section 6.7, we use the following illustration as an incorrect use of semaphores to solve the critical-section problem:**
 ```
   wait(mutex);
   ...
@@ -186,7 +188,7 @@ placed to prevent the race condition(s).
   ...
   wait(mutex);
 ```
-Explain why this is an example of a liveness failure.**
+**Explain why this is an example of a liveness failure.**
 
 **6.25 Demonstrate thatmonitors and semaphores are equivalent to the degree that they can be used to implement solutions to the same types of synchronization problems.**
 

@@ -143,11 +143,14 @@ using contended block..
 - b. The lock is to be held for a long duration.
 - c. A thread may be put to sleep while holding the lock.
 <br>**Try Answers**<br>
-- a. a spinlock
-- b. a mutex-lock
-- c. 
+- a. a spinlock --> No context switch is required in spinlock, which takes long time.
+- b. a mutex-lock --> As lock is to be held for a long duration, busy waiting wastes cpu cycles.
+- c. a mutex-lock --> The lock would be held for long time, busy waiting is inappropriate.
+<br>
 **6.20 Assume that a context switch takes T time. Suggest an upper bound (in terms of T) for holding a spinlock. If the spinlock is held for any longer, a mutex lock (where waiting threads are put to sleep) is a better alternative.**
-
+<br>**Try Answers**<br>
+**2T**Given that waiting on a lock requires two context switches—a context switch to move the thread to the waiting state and a second context switch to restore the waiting thread once the lock becomes available—the general rule is to use a spinlock if the lock will be held for a duration of less than two context switches.
+<br>
 **6.21 A multithreaded web server wishes to keep track of the number of requests it services (known as hits). Consider the two following strategies to prevent a race condition on the variable hits. The first strategy is to use a basic mutex lock when updating hits:**
 ```
 int hits;
@@ -163,7 +166,7 @@ atomic inc(&hits);
 ```
 **Explain which of these two strategies is more efficient.**
 
-**6.20 Consider the code example for allocating and releasing processes shown  in Figure 6.20.**
+**6.22 Consider the code example for allocating and releasing processes shown in Figure 6.20.**
 - a. Identify the race condition(s).
 - b. Assume you have a mutex lock named mutex with the operations acquire() and release(). Indicatewhere the locking needs to be
 placed to prevent the race condition(s).
@@ -172,3 +175,32 @@ placed to prevent the race condition(s).
    with the atomic 
      <br>```integer atomic t number of processes = 0```<br>
   to prevent the race condition(s)?
+
+**6.23 Servers can be designed to limit the number of open connections. For example, a server may wish to have only N socket connections at any point in time. As soon as N connections are made, the server will not accept another incoming connection until an existing connection is released. Illustrate how semaphores can be used by a server to limit the number of concurrent connections.**
+
+**6.24 In Section 6.7, we use the following illustration as an incorrect use of semaphores to solve the critical-section problem:
+```
+  wait(mutex);
+  ...
+  critical section
+  ...
+  wait(mutex);
+```
+Explain why this is an example of a liveness failure.**
+
+**6.25 Demonstrate thatmonitors and semaphores are equivalent to the degree that they can be used to implement solutions to the same types of synchronization problems.**
+
+**6.26 Describe how the signal() operation associated with monitors differs from the corresponding operation defined for semaphores.**
+
+**6.27 Suppose the signal() statement can appear only as the last statement in a monitor function. Suggest how the implementation described in Section 6.7 can be simplified in this situation.**
+
+**6.28 Consider a system consisting of processes P1, P2, ..., Pn, each ofwhich has a unique priority number. Write a monitor that allocates three identical printers to these processes, using the priority numbers for deciding the order of allocation.**
+
+**6.29 A file is to be shared among different processes, each of which has a unique number. The file can be accessed simultaneously by several processes, subject to the following constraint: the sum of all unique numbers associated with all the processes currently accessing the file must be less than n.Write a monitor to coordinate access to the file.**
+
+**6.30 When a signal is performed on a condition inside amonitor, the signaling process can either continue its execution or transfer control to the process that is signaled. How would the solution to the preceding exercise differ
+with these two different ways in which signaling can be performed?**
+
+**6.31 Design an algorithm for a monitor that implements an alarm clock that enables a calling program to delay itself for a specified number of time units (ticks). You may assume the existence of a real hardware clock that invokes a function tick() in your monitor at regular intervals.**
+
+**6.32 Discuss ways in which the priority inversion problem could be addressed in a real-time system. Also discuss whether the solutions could be implemented within the context of a proportional share scheduler.**

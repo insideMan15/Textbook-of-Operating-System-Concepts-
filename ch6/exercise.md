@@ -156,15 +156,15 @@ using contended block..
 **6.21 A multithreaded web server wishes to keep track of the number of requests it services (known as hits). Consider the two following strategies to prevent a race condition on the variable hits. The first strategy is to use a basic mutex lock when updating hits:**
 ```
 int hits;
-mutex lock hit lock;
-hit lock.acquire();
+mutex_lock hit_lock;
+hit_lock.acquire();
 hits++;
-hit lock.release();
+hit_lock.release();
 ```
-**Asecond strategy is to use an atomic integer:**
+**A second strategy is to use an atomic integer:**
 ```
-atomic t hits;
-atomic inc(&hits);
+atomic_t hits;
+atomic_inc(&hits);
 ```
 **Explain which of these two strategies is more efficient.**
 
@@ -179,6 +179,7 @@ placed to prevent the race condition(s).
   to prevent the race condition(s)?
 
 **6.23 Servers can be designed to limit the number of open connections. For example, a server may wish to have only N socket connections at any point in time. As soon as N connections are made, the server will not accept another incoming connection until an existing connection is released. Illustrate how semaphores can be used by a server to limit the number of concurrent connections.**
+
 
 **6.24 In Section 6.7, we use the following illustration as an incorrect use of semaphores to solve the critical-section problem:**
 ```

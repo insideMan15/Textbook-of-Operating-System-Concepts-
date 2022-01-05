@@ -167,16 +167,21 @@ atomic_t hits;
 atomic_inc(&hits);
 ```
 **Explain which of these two strategies is more efficient.**
+<br>**Try Answers**<br>
+- atomic seems better...
 
 **6.22 Consider the code example for allocating and releasing processes shown in Figure 6.20.**
 - a. Identify the race condition(s).
-- b. Assume you have a mutex lock named mutex with the operations acquire() and release(). Indicatewhere the locking needs to be
-placed to prevent the race condition(s).
+- b. Assume you have a mutex lock named mutex with the operations acquire() and release(). Indicate where the locking needs to be placed to prevent the race condition(s).
 - c. Could we replace the integer variable 
-      <br>```int number of processes = 0```<br>
+      <br>```int number_of_processes = 0```<br>
    with the atomic 
-     <br>```integer atomic t number of processes = 0```<br>
+     <br>```integer atomic_t number_of_processes = 0```<br>
   to prevent the race condition(s)?
+<br>**Try Answers**<br>
+- a. Assume that different processes was assigned the same varible 'number of processes'
+- b. added in the allocate_process() else block and in the release_process()
+- c. it works.
 
 **6.23 Servers can be designed to limit the number of open connections. For example, a server may wish to have only N socket connections at any point in time. As soon as N connections are made, the server will not accept another incoming connection until an existing connection is released. Illustrate how semaphores can be used by a server to limit the number of concurrent connections.**
 

@@ -184,7 +184,8 @@ atomic_inc(&hits);
 - c. it works.
 
 **6.23 Servers can be designed to limit the number of open connections. For example, a server may wish to have only N socket connections at any point in time. As soon as N connections are made, the server will not accept another incoming connection until an existing connection is released. Illustrate how semaphores can be used by a server to limit the number of concurrent connections.**
-
+<br>**Try Answers**<br>
+- Defining the N as a semaphore. A connection should call wait(N) before get connected and after releasing connection, the signal(S) should be called. 
 
 **6.24 In Section 6.7, we use the following illustration as an incorrect use of semaphores to solve the critical-section problem:**
 ```
@@ -195,6 +196,8 @@ atomic_inc(&hits);
   wait(mutex);
 ```
 **Explain why this is an example of a liveness failure.**
+<br>**Try Answers**<br>
+In this case, the process will permanently block on the second call to wait(), as the semaphore is now unavailable.
 
 **6.25 Demonstrate thatmonitors and semaphores are equivalent to the degree that they can be used to implement solutions to the same types of synchronization problems.**
 

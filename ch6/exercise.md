@@ -199,17 +199,17 @@ atomic_inc(&hits);
 <br>**Try Answers**<br>
 In this case, the process will permanently block on the second call to wait(), as the semaphore is now unavailable.
 
-**6.25 Demonstrate thatmonitors and semaphores are equivalent to the degree that they can be used to implement solutions to the same types of synchronization problems.**
+**6.25 Demonstrate that monitors and semaphores are equivalent to the degree that they can be used to implement solutions to the same types of synchronization problems.**
 
 **6.26 Describe how the signal() operation associated with monitors differs from the corresponding operation defined for semaphores.**
 
 **6.27 Suppose the signal() statement can appear only as the last statement in a monitor function. Suggest how the implementation described in Section 6.7 can be simplified in this situation.**
 
-**6.28 Consider a system consisting of processes P1, P2, ..., Pn, each ofwhich has a unique priority number. Write a monitor that allocates three identical printers to these processes, using the priority numbers for deciding the order of allocation.**
+**6.28 Consider a system consisting of processes P1, P2, ..., Pn, each of which has a unique priority number. Write a monitor that allocates three identical printers to these processes, using the priority numbers for deciding the order of allocation.**
 
 **6.29 A file is to be shared among different processes, each of which has a unique number. The file can be accessed simultaneously by several processes, subject to the following constraint: the sum of all unique numbers associated with all the processes currently accessing the file must be less than n.Write a monitor to coordinate access to the file.**
 
-**6.30 When a signal is performed on a condition inside amonitor, the signaling process can either continue its execution or transfer control to the process that is signaled. How would the solution to the preceding exercise differ
+**6.30 When a signal is performed on a condition inside a monitor, the signaling process can either continue its execution or transfer control to the process that is signaled. How would the solution to the preceding exercise differ
 with these two different ways in which signaling can be performed?**
 
 **6.31 Design an algorithm for a monitor that implements an alarm clock that enables a calling program to delay itself for a specified number of time units (ticks). You may assume the existence of a real hardware clock that invokes a function tick() in your monitor at regular intervals.**

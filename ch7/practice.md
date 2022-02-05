@@ -8,7 +8,7 @@
 
 **7.5 Explain the difference between signaled and non-signaled states with Windows dispatcher objects.**
 
-**7.6 Assume val is an atomic integer in a Linux system. What is the value of val aftrer the following operations have been completed?
+**7.6 Assume val is an atomic integer in a Linux system. What is the value of val aftrer the following operations have been completed?**
 ```
 atomicset(&val,10);
 atomicsub(8,&val);

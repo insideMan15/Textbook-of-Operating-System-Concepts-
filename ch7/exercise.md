@@ -8,7 +8,7 @@
 - a Explain why this is true.
 - b Design a new scheme that is suitable for larger portions
 
-**7.11 Discuess the tradeoff between fairness and throughput of operations in the readers-writers problem. Propose a method for solving the readers-writers problem without causing starvation. **
+**7.11 Discuess the tradeoff between fairness and throughput of operations in the readers-writers problem. Propose a method for solving the readers-writers problem without causing starvation.**
 
 **7.12 Explain why the call to the lock() method in a Java ReentrantLock is not placed in the try clause for exception handling, yet the call to the unlock() method is placed in a finally clause.**
 
